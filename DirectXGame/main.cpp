@@ -12,7 +12,8 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 
 	ImGuiManager* imGuiManager = ImGuiManager::GetInstance();
 
-	std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
+	//std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
+	GameScene* gameScene = new GameScene;
 	gameScene->Initialize();
 
 	while (true) {

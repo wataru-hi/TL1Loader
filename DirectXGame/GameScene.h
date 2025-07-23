@@ -15,44 +15,43 @@ public:
 	void Draw();
 
 private:
-	// レベルデータ
 	struct ObjectData {
+		std::string type; // "type"
+		std::string name; // "name"
 
-		std::string type;
-		std::string name;
-		// オブジェクト1個分のデータ
 		struct Transform {
-			// 各トランスフォーム
-			KamataEngine::Vector3 translation;
-			KamataEngine::Vector3 rotation;
-			KamataEngine::Vector3 scaling;
+			KamataEngine::Vector3 translation; // translation
+			KamataEngine::Vector3 rotation;    // rotation
+			KamataEngine::Vector3 scaling;     // scaling
 		};
 
-		Transform transform;
+		Transform transform; // メンバの準備
 
-		std::string fileName;
+		//"file_name"
+		std::string file_name;
 
-		// オブジェクトのコンテナ
-		//std::vector<ObjectData> objects;
+		//// オブジェクトのコンテナ
+		// std::vector<ObjectData> objects;
 	};
 
+	// レベルデータ
 	struct LevelData {
+		// "name"
 		std::string name;
-
-		std::list<ObjectData> objects;
+		// "objects"
+		std::vector<ObjectData> objects;
 	};
 
-	static inline const std::string kDefaultBaseDirectory = "Resources/level/";
-	static inline const std::string fileName = "test.json";
-	//const std::string kExtension = "";
-
-	std::unique_ptr<LevelData> levelData;
+	// モデルデータコンテナ
 	std::map<std::string, KamataEngine::Model*> models;
 
-	std::vector<KamataEngine::WorldTransform*> worldtransforms;
-	
-	std::unique_ptr<KamataEngine::Model> testModel;
-	KamataEngine::WorldTransform testWorldTransform;
+	// ワールドトランスフォーム
+	std::vector<KamataEngine::WorldTransform*> worldTransforms;
 
-	KamataEngine::Camera camera;
+	//-------------------------------------------------------------------
+	// レベルデータを構造体に格納していく
+	//-------------------------------------------------------------------
+	LevelData* levelData = nullptr;
+
+	KamataEngine::Camera camera_;
 };
